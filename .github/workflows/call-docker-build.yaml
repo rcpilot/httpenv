@@ -67,7 +67,7 @@ jobs:
       - name: Run Trivy for HIGH,CRITICAL CVEs and report (blocking)
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: ${{ github.run_id }}
+          image-ref: coretag/httpenv:latest
           exit-code: 1
           ignore-unfixed: true
           vuln-type: 'os,library'
