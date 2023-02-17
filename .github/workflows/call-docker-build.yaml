@@ -35,7 +35,7 @@ jobs:
         with:
           images: coretag/httpenv
           flavor: |
-            latest=false
+            latest=auto
           tags: |
             type=raw,value=06
             type=raw,value=latest,enable=${{ endsWith(github.ref, github.event.repository.default_branch) }}
