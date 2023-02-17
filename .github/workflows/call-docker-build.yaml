@@ -53,8 +53,13 @@ jobs:
           cache-to: type=gha,mode=max
           platforms: linux/amd64,linux/arm64,linux/arm/v7
 
-        # If PR, put image tags in the PR comments
-        # from https://github.com/marketplace/actions/create-or-update-comment
+      - name: Run Trivy for all CVEs (non-blocking)
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: ${{ github.run_id }}
+          exit-code: 0
+          format: table 
+
       - name: Find comment for image tags
         uses: peter-evans/find-comment@v1
         if: github.event_name == 'pull_request'
@@ -64,7 +69,6 @@ jobs:
           comment-author: 'github-actions[bot]'
           body-includes: Docker image tag(s) pushed
       
-        # If PR, put image tags in the PR comments
       - name: Create or update comment for image tags
         uses: peter-evans/create-or-update-comment@v1
         if: github.event_name == 'pull_request'
