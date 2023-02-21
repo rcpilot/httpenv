@@ -1,7 +1,6 @@
 services:
   httpenv:
     image: "${TESTING_IMAGE}"
-  
   postgres:
     image: postgres
     environment:
