@@ -1,8 +1,6 @@
 #!/bin/bash
 set -eo pipefail
 
-# touch mac
-
 host="$(hostname -i || echo '127.0.0.1')"
 user="${POSTGRES_USER:-postgres}"
 db="${POSTGRES_DB:-$POSTGRES_USER}"
